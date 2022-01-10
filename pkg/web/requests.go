@@ -22,3 +22,9 @@ type Sale struct {
 	ProductID int     `json:"product_id"`
 	Quantity  float64 `json:"quantity"`
 }
+
+type FileData struct {
+	FileLocation  string `json:"file_location"`
+	RowDivider    string `json:"row_divider"`
+	ColumnDivider string `json:"column_divider"`
+}
