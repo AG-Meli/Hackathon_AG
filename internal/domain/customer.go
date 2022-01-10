@@ -6,3 +6,10 @@ type Customer struct {
 	FirstName string `json:"first_name"`
 	Condition string `json:"condition"`
 }
+
+func ValidateCustomerAttributes(lastName, firstName, condition string) bool {
+	if lastName == "" || firstName == "" || condition == "" {
+		return false
+	}
+	return true
+}

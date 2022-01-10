@@ -67,8 +67,13 @@ func (c HandlerCustomer) Get() gin.HandlerFunc {
 
 func (c HandlerCustomer) Restore() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		fileContent := ctx.Param("fileContent")
-		response := c.service.Restore(ctx, fileContent)
+		var requestFileData web.FileData
+		err := ctx.ShouldBind(&requestFileData)
+		if err != nil {
+			web.CheckResponse(ctx, web.Response{StatusCode: 400, Content: "Invalid params"})
+			return
+		}
+		response := c.service.Restore(ctx, requestFileData.FileLocation, requestFileData.RowDivider, requestFileData.ColumnDivider)
 		web.CheckResponse(ctx, response)
 		return
 	}
