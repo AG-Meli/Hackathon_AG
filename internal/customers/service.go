@@ -1,12 +1,15 @@
 package customers
 
-import "github.com/AG-Meli/Hackathon_AG/internal/domain"
+import (
+	"github.com/AG-Meli/Hackathon_AG/pkg/web"
+	"github.com/gin-gonic/gin"
+)
 
 type Service interface {
-	Insert(lastName, firstName, condition string) (domain.Customer, error)
-	Update(customerID int, firstName, condition string) (domain.Customer, error)
-	Get(customerID int) (domain.Customer, error)
-	Restore(data string) ([]domain.Customer, error)
+	Insert(ctx *gin.Context, lastName, firstName, condition string) web.Response
+	Update(ctx *gin.Context, customerID int, lastName, firstName, condition string) web.Response
+	Get(ctx *gin.Context, customerID int) web.Response
+	Restore(ctx *gin.Context, data string) web.Response
 }
 
 type service struct {
@@ -19,22 +22,22 @@ func NewService(repository Repository) Service {
 	}
 }
 
-func (s service) Insert(lastName, firstName, condition string) (domain.Customer, error) {
+func (s service) Insert(ctx *gin.Context, lastName, firstName, condition string) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Update(customerID int, firstName, condition string) (domain.Customer, error) {
+func (s service) Update(ctx *gin.Context, customerID int, lastName, firstName, condition string) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Get(customerID int) (domain.Customer, error) {
+func (s service) Get(ctx *gin.Context, customerID int) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Restore(data string) ([]domain.Customer, error) {
+func (s service) Restore(ctx *gin.Context, data string) web.Response {
 	//TODO implement me
 	panic("implement me")
 }

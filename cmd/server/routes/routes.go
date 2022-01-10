@@ -54,7 +54,7 @@ func (r *router) buildProductRoutes() {
 
 func (r *router) buildSalesRoutes() {
 	repo := sales.NewRepository(r.db)
-	service := sales.Service(repo)
+	service := sales.NewService(repo)
 	handler := handler.NewHandlerSale(service)
 	saleGroup := r.rg.Group("/sales")
 	{

@@ -4,10 +4,11 @@ import (
 	"database/sql"
 	"github.com/AG-Meli/Hackathon_AG/cmd/server/routes"
 	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-	db, err := sql.Open("mysql", "root:root@/hackathon")
+	db, err := sql.Open("mysql", "aghione:aghione90@/hackathon")
 	if err != nil {
 		panic(err)
 	}

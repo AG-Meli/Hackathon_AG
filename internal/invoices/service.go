@@ -1,12 +1,15 @@
 package invoices
 
-import "github.com/AG-Meli/Hackathon_AG/internal/domain"
+import (
+	"github.com/AG-Meli/Hackathon_AG/pkg/web"
+	"github.com/gin-gonic/gin"
+)
 
 type Service interface {
-	Insert(dateTime string, customerID int, total float64) (domain.Invoice, error)
-	Update(invoiceID int, dateTime string, customerID int, total float64) (domain.Invoice, error)
-	Get(invoiceID int) (domain.Invoice, error)
-	Restore(data string) ([]domain.Invoice, error)
+	Insert(ctx *gin.Context, dateTime string, customerID int, total float64) web.Response
+	Update(ctx *gin.Context, invoiceID int, dateTime string, customerID int, total float64) web.Response
+	Get(ctx *gin.Context, invoiceID int) web.Response
+	Restore(ctx *gin.Context, data string) web.Response
 }
 
 type service struct {
@@ -19,22 +22,22 @@ func NewService(repository Repository) Service {
 	}
 }
 
-func (s service) Insert(dateTime string, customerID int, total float64) (domain.Invoice, error) {
+func (s service) Insert(ctx *gin.Context, dateTime string, customerID int, total float64) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Update(invoiceID int, dateTime string, customerID int, total float64) (domain.Invoice, error) {
+func (s service) Update(ctx *gin.Context, invoiceID int, dateTime string, customerID int, total float64) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Get(invoiceID int) (domain.Invoice, error) {
+func (s service) Get(ctx *gin.Context, invoiceID int) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s service) Restore(data string) ([]domain.Invoice, error) {
+func (s service) Restore(ctx *gin.Context, data string) web.Response {
 	//TODO implement me
 	panic("implement me")
 }
