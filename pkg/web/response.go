@@ -8,10 +8,10 @@ type Response struct {
 }
 
 func CheckResponse(ctx *gin.Context, response Response) {
-	switch response.StatusCode {
-	case 200 | 201 | 204:
+	switch {
+	case response.StatusCode == 200 || response.StatusCode == 201 || response.StatusCode == 204:
 		createSuccessResponse(ctx, response.StatusCode, response.Content)
-	case 400 | 404 | 500:
+	case response.StatusCode == 400 || response.StatusCode == 404 || response.StatusCode == 500:
 		createErrorResponse(ctx, response.StatusCode, response.Content.(string))
 	}
 }
